@@ -23,7 +23,7 @@
         <i
           class="fa-solid fa-trash text-xl hover:text-weather-s duration-150 cursor-pointer"
           @click="removeCity"
-          v-if="!route.query.preview"
+          v-if="!route.query.preview && route.name !== 'home'"
         ></i>
       </div>
       <BaseModal :modal-active="modalActive" @close-modal="toggleModal">
@@ -66,7 +66,15 @@ const addCity = () => {
 
   let query = Object.assign({}, route.query);
   delete query.preview;
+  query.id = locationObj.id;
   router.replace({ query });
+};
+
+const removeCity = () => {
+  const cities = JSON.parse(localStorage.getItem("savedCities"));
+  const updatedCities = cities.filter((city) => city.id !== route.query.id);
+  localStorage.setItem("savedCities", JSON.stringify(updatedCities));
+  router.push({ name: "home" });
 };
 
 const modalActive = ref(null);

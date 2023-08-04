@@ -18,7 +18,6 @@ const savedCities = ref([]);
 const getCities = async () => {
   if (localStorage.getItem("savedCities")) {
     savedCities.value = JSON.parse(localStorage.getItem("savedCities"));
-    console.log(savedCities.value);
     const requests = [];
     savedCities.value.forEach((city) => {
       requests.push(
@@ -44,6 +43,7 @@ const goToCityView = (city) => {
       city: city.city,
     },
     query: {
+      id: city.id,
       lat: city.coords.lat,
       lng: city.coords.lng,
     },
