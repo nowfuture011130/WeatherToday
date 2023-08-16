@@ -13,5 +13,5 @@
 </template>
 
 <script setup>
-import AnimatedPlaceHolder from "./AnimatedPlaceHolder.vue";
+import AnimatedPlaceHolder from "./AnimatedPlaceHolder";
 </script>

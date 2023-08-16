@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen font-Roboto bg-weather-p">
+    <!-- 头部导航导入 -->
     <SiteNavigation />
     <RouterView v-slot="{ Component }">
       <Transition name="page" mode="out-in">
